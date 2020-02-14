@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8"/>
+        <title></title>
+    </head>
+    <body>
+    <script>
+        let playerScore = 0;
+        let computerScore = 0;
+
+        function computerPlay() {
+            let play = Math.floor(Math.random() *2);
+            
+            switch (play) {
+                case 0:
+                    return 'rock';
+
+                case 1:  
+                    return 'paper';
+
+                case 2: 
+                    return 'scissors';
+
+                default: 
+                    console.log('Computer broke');
+                    break;         
+            }
+        }
+
+        function playerPlay() {
+            let playerSelection = prompt('Please choose: Rock, Paper, Scissors.');               
+            playerSelection = playerSelection.toLowerCase();
+            if (playerSelection === 'rock' || playerSelection === 'paper' || playerSelection === 'scissors') {
+                return playerSelection;
+                }
+            else {
+                alert("Please enter valid choice");
+            }    
+            }
+        
+        function playRound(playerSelection, computerSelection) {
+                if (playerSelection == 'rock' && computerSelection == 'scissors' ||
+                    playerSelection == 'paper' && computerSelection == 'rock' ||
+                    playerSelection == 'scissors' && computerSelection == 'paper') {
+                        playerScore++;
+                        return "You win " + playerSelection + " beats " + computerSelection;
+                    }
+                else if (playerSelection == 'rock' && computerSelection == 'paper' ||
+                    playerSelection == 'paper' && computerSelection == 'scissors' ||
+                    playerSelection == 'scissors' && computerSelection == 'rock') {
+                        computerScore++;
+                        return "You lose " + computerSelection + " beats " + playerSelection;
+                    }
+                else {
+                    return "Its a tie";
+                } 
+        }
+
+        
+        
+        function playGame() {
+            for (i = 0; i < 4; i++){
+                let playerSelection = playerPlay();
+                console.log(playerSelection);
+                let computerSelection = computerPlay();
+                console.log(computerSelection);
+                console.log(playRound(playerSelection, computerSelection))
+                console.log("Player score " + playerScore + " Computer score "+ computerScore )
+            }
+
+        }
+        playGame();
+           
+        
+    </script>
+    </body>
+</html>
